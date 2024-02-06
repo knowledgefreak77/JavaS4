@@ -1,0 +1,73 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class CalculatorApp {
+
+    public static void main(String[] args) {
+        Scanner inputScanner = new Scanner(System.in);
+        CalculatorFunctions calculator = new CalculatorFunctions();
+        ArrayList<Double> numbersList = new ArrayList<>();
+
+        while (true) {
+            System.out.println("Options:");
+            System.out.println("1. Addition");
+            System.out.println("2. Subtraction");
+            System.out.println("3. Multiplication");
+            System.out.println("4. Division");
+            System.out.println("5. Square Root");
+            System.out.println("6. Power");
+            System.out.println("7. Mean");
+            System.out.println("8. Variance");
+            System.out.println("9. Exit");
+            System.out.print("Enter your choice: ");
+
+            int userChoice = inputScanner.nextInt();
+
+            switch (userChoice) {
+                case 1:
+                    System.out.println("Result: " + calculator.add(inputScanner.nextDouble(), inputScanner.nextDouble()));
+                    break;
+                case 2:
+                    System.out.println("Result: " + calculator.subtract(inputScanner.nextDouble(), inputScanner.nextDouble()));
+                    break;
+                case 3:
+                    System.out.println("Result: " + calculator.multiply(inputScanner.nextDouble(), inputScanner.nextDouble()));
+                    break;
+                case 4:
+                    System.out.println("Result: " + calculator.divide(inputScanner.nextDouble(), inputScanner.nextDouble()));
+                    break;
+                case 5:
+                    System.out.println("Result: " + calculator.sqrt(inputScanner.nextDouble()));
+                    break;
+                case 6:
+                    System.out.println("Result: " + calculator.power(inputScanner.nextDouble(), inputScanner.nextDouble()));
+                    break;
+                case 7:
+                    System.out.println("Enter numbers (type 'end' to finish):");
+                    while (inputScanner.hasNextDouble()) {
+                        numbersList.add(inputScanner.nextDouble());
+                    }
+                    inputScanner.next();
+                    double[] inputNumbers = numbersList.stream().mapToDouble(i -> i).toArray();
+                    System.out.println("Mean: " + calculator.mean(inputNumbers));
+                    numbersList.clear();
+                    break;
+                case 8:
+                    System.out.println("Enter numbers (type 'end' to finish):");
+                    while (inputScanner.hasNextDouble()) {
+                        numbersList.add(inputScanner.nextDouble());
+                    }
+                    inputScanner.next();
+                    inputNumbers = numbersList.stream().mapToDouble(i -> i).toArray();
+                    System.out.println("Variance: " + calculator.variance(inputNumbers));
+                    numbersList.clear();
+                    break;
+                case 9:
+                    System.out.println("Exiting...");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice. Please enter a number between 1 and 9.");
+            }
+        }
+    }
+}
