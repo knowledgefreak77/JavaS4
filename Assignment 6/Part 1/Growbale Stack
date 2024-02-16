@@ -1,0 +1,48 @@
+import java.util.ArrayList;
+
+public class GrowableStack implements InterfaceStack {
+
+    private int top = -1;
+    private ArrayList<Integer> stack = new ArrayList<>(2);
+
+    public GrowableStack() {
+        stack = new ArrayList<>();
+    }
+
+    @Override
+    public void push(int element) {
+        stack.add(++top, element);
+    }
+
+    @Override
+    public int pop() {
+        if (isUnderflow()) {
+            System.out.println("Stack is Empty");
+            System.exit(0);
+        }
+        return stack.remove(top--);
+    }
+
+    @Override
+    public void displayStack() {
+        if (isUnderflow()) {
+            System.out.println("Stack is Empty");
+            System.exit(0);
+        } else {
+            System.out.println("Stack Elements: ");
+            for (int x : stack)
+                System.out.print(x + " ");
+        }
+        System.out.println("");
+    }
+
+    @Override
+    public boolean isOverflow() {
+        return false;
+    }
+
+    @Override
+    public boolean isUnderflow() {
+        return top == -1;
+    }
+}
