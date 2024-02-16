@@ -1,0 +1,7 @@
+public interface InterfaceStack {
+    void push(int element);
+    int pop();
+    void displayStack();
+    boolean isOverflow();
+    boolean isUnderflow();
+}
