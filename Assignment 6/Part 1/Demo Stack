@@ -1,0 +1,25 @@
+public class StackDemo {
+    public static void main(String[] args) {
+        int stack[] = new int[5];
+        int t = -1;
+
+        FixedStack fixedStack = new FixedStack(stack, t);
+        fixedStack.push(1);
+        fixedStack.push(2);
+        fixedStack.push(3);
+        fixedStack.displayStack();
+        System.out.println(fixedStack.pop());
+        fixedStack.displayStack();
+
+        GrowableStack growableStack = new GrowableStack();
+        growableStack.push(1);
+        growableStack.push(2);
+        growableStack.push(3);
+        growableStack.push(4);
+        growableStack.push(5);
+        growableStack.push(6);
+        growableStack.displayStack();
+        System.out.println(growableStack.pop());
+        growableStack.displayStack();
+    }
+}
